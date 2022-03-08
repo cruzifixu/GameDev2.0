@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             }
            
             cam.transform.localPosition = ViewSettings; // move to same position as parent
-            cam.transform.rotation = angle;
+            cam.transform.rotation = angle; // move to same angle as parent
         }
     }
 }
