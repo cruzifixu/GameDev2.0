@@ -13,11 +13,14 @@
 >> 4 different for pov: back, top, driver and side
 
 ### Task 2
-- [ ] Bugfix
-- [ ] Tutorial
-- [ ] Bonus
+- [x] Bugfix
+- [x] Tutorial
+- [x] Bonus
 
 > extra features
+>> regain health if animals feed three times
+>>
+>> player can not move anymore or animals wont spawn if player lost
 
 ### Task 3
 - [ ] Bugfix
