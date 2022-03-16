@@ -23,11 +23,14 @@
 >> player can not move anymore or animals wont spawn if player lost
 
 ### Task 3
-- [ ] Bugfix
-- [ ] Tutorial
-- [ ] Bonus
+- [x] Bugfix
+- [x] Tutorial
+- [x] Bonus
 
 > extra features
+>> fireworks if score mod 12
+>>
+>> bounces balloon from top
 
 
 ### Task 4
