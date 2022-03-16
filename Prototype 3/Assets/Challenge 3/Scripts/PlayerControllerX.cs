@@ -6,7 +6,7 @@ public class PlayerControllerX : MonoBehaviour
 {
     public bool gameOver;
 
-    private float floatForce = 0.6f;
+    private float floatForce = 0.3f;
     private float gravityModifier = 1.5f;
     private Rigidbody playerRb;
 
@@ -46,7 +46,7 @@ public class PlayerControllerX : MonoBehaviour
         // player can not get off screen
         if (transform.position.y < lowerBorder)
         { 
-            playerRb.AddForce(Vector3.up * 3, ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * 0.1f, ForceMode.Impulse);
             playerAudio.PlayOneShot(bounceSound, 1.0f);
         }
         if (transform.position.y > upperBorder)

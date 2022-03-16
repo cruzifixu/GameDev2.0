@@ -10,9 +10,15 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = true;
     public bool gameOver = false;
 
+    // Movement extras
+    private bool doubleJump = false;
+    private float boostForce = 100;
+    public bool boost = false;
+
     // Particles
     public ParticleSystem dirtParticle;
     public ParticleSystem explosionParticle;
+    public ParticleSystem fireworkParticle;
 
     // Animation
     private Animator playerAnim;
@@ -36,10 +42,23 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
+            jump();
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && !isOnGround && !gameOver)
+        { 
+            if (!doubleJump)
+            {
+                jump();
+                doubleJump = true;
+            }
+        }
+        else if(Input.GetKey(KeyCode.LeftShift))
+        {
+            boost = true;
+        }
+        else
+        {
+            boost = false;
         }
     }
 
@@ -50,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            doubleJump = false;
             if(!gameOver)
             { dirtParticle.Play(); }
         }
@@ -61,6 +81,21 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetInteger("DeathType_int", 1);
             explosionParticle.Play();
             playerAudio.PlayOneShot(crashSound, 1.0f);
+            dirtParticle.Stop();
         }
     }
+
+    private void jump()
+    {
+        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isOnGround = false;
+        playerAnim.SetTrigger("Jump_trig");
+        playerAudio.PlayOneShot(jumpSound, 1.0f);
+    }
+
+    public Animator getAnim()
+    { return playerAnim; }
+
+    public ParticleSystem getFirework()
+    { return fireworkParticle; }
 }
