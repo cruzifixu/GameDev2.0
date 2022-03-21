@@ -53,4 +53,7 @@ public class SpawnManager : MonoBehaviour
     {
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
+
+    public int getWaveNum()
+    { return waveNum; }
 }
