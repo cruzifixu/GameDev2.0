@@ -43,11 +43,14 @@
 >> game over pop up
 
 ### Task 5
-- [ ] Bugfix
-- [ ] Tutorial
-- [ ] Bonus
+- [x] Bugfix
+- [x] Tutorial
+- [x] Bonus
 
 > extra features
+>> music on off
+>> 
+>> Mystery Box 1/5 chance to get extra lives
 
 
 
