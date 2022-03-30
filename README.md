@@ -34,11 +34,13 @@
 
 
 ### Task 4
-- [ ] Bugfix
-- [ ] Tutorial
-- [ ] Bonus
+- [x] Bugfix
+- [x] Tutorial
+- [x] Bonus
 
 > extra features
+>> spawn stops after player falls
+>> game over pop up
 
 ### Task 5
 - [ ] Bugfix
