@@ -5,13 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 5.0f;
+    private float speed = 4.0f;
     private GameObject focalPoint;
 
     // POWER UP
     private bool hasPowerup = false;
     private float powerUpStrength = 15.0f;
     public GameObject powerupIndicator;
+  
+    private bool gameover = false;
+    private bool logged = false;
+    public GameObject gameOverScreen;
+
+    private float jumpForce = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +29,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float forwardInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+        if(transform.position.y < -10)
+        {
+            gameover = true;
+            if(!logged)
+            {
+                Debug.Log("Game Over"); // to console log once
+            }
+            logged = true;
+            gameOverScreen.gameObject.SetActive(true);
 
-        powerupIndicator.transform.position = transform.position + new Vector3(0, 0, 0);
+        }
+        else
+        {
+            float forwardInput = Input.GetAxis("Vertical");
+            playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+
+            powerupIndicator.transform.position = transform.position + new Vector3(0, 0, 0);
+        }
     }
+    public bool getGameStatus()
+    { return gameover; }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,10 +66,23 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
         {
-            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position); // enemy pos - player pos -> yeets enemy back
+            int random = Random.Range(0, 1);
+            switch(random)
+            {
+                case 0:
+                    if(Input.GetKeyDown(KeyCode.Space))
+                    {
+                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    }
+                    break;
+                case 1:
+                    Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+                    Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position); // enemy pos - player pos -> yeets enemy back
 
-            enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
+                    enemyRigidbody.AddForce(awayFromPlayer * powerUpStrength, ForceMode.Impulse);
+                    break;
+            }
+            
 
             Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
         }
