@@ -5,8 +5,8 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    private float minSpeed = 12;
-    private float maxSpeed = 16;
+    private float minSpeed = 13;
+    private float maxSpeed = 17;
     private float maxTorque = 10;
     private float xRange = 4;
     private float xSpawnPos = 6;
@@ -15,6 +15,7 @@ public class Target : MonoBehaviour
     private GameManager gameManager;
 
     public ParticleSystem explosionParticle;
+    public ParticleSystem fireworkParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +42,19 @@ public class Target : MonoBehaviour
         {
             Destroy(gameObject);
             gameManager.UpdateScore(pointVal);
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            if(gameObject.CompareTag("Mystery"))
+            {
+                RandomMystery();
+            }
+            else { Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); }
         }
     } // if clicked 
 
     private void OnTriggerEnter(Collider other)
     { 
         Destroy(gameObject);
-        if (!gameObject.CompareTag("Bad")) { gameManager.GameOver(); }
+        if (!gameObject.CompareTag("Bad") && gameManager.isGameActive) { gameManager.UpdateLives(1); }
+        if (!gameObject.CompareTag("Bad") && gameManager.getLives() == 0) { gameManager.GameOver(); }
     } // if targets pass sensor
 
     Vector3 RandomForce()
@@ -57,4 +63,14 @@ public class Target : MonoBehaviour
     { return Random.Range(-maxTorque, maxTorque); }
     Vector3 RandomSpawnPos()
     { return new Vector3(Random.Range(-xRange, xRange), -xSpawnPos); }
+
+    void RandomMystery()
+    {
+        if(Random.Range(1, 5) == 2)
+        {
+            gameManager.UpdateLives(-1); // add extra lives
+            Instantiate(fireworkParticle, transform.position, fireworkParticle.transform.rotation);
+        }
+        else { Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); }
+    }
 }

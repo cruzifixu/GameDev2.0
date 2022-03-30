@@ -7,35 +7,49 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // GAME SETTINGS
     public List<GameObject> targets;
     private float spawnRate = 1.0f;
-    private int score;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-
-    public Button restartButton;
-
     public bool isGameActive;
 
+    // ----- UI -----
+
+    // TITLE
     public GameObject titleScreen;
+
+    // IN GAME TEXT
+    private int lives = 3;
+    public TextMeshProUGUI livesText;
+    private int score;
+    public TextMeshProUGUI scoreText;
+    public bool gamePaused;
+    public TextMeshProUGUI pausedText;
+
+    // GAME OVER TEXT
+    public TextMeshProUGUI gameOverText;
+    public Button restartButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            gamePaused = !gamePaused;
+            Pause();
+        }
     }
 
-    public void StartGame(int difficulty)
+    public void StartGame(float difficulty)
     {
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
+        UpdateLives(0);
         spawnRate /= difficulty;
 
         titleScreen.gameObject.SetActive(false);
@@ -44,7 +58,26 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        if(score < 0)
+        {
+            score = 0;
+            GameOver();
+        }
         scoreText.text = "Score: " + score;
+    }
+
+    void Pause()
+    {
+        if(gamePaused) 
+        { 
+            Time.timeScale = 0;
+            pausedText.gameObject.SetActive(true);
+        }
+        else 
+        { 
+            Time.timeScale = 1;
+            pausedText.gameObject.SetActive(false);
+        }
     }
 
     public void GameOver()
@@ -69,4 +102,19 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+    public void UpdateLives(int livesLost)
+    {
+        if(lives > 0)
+        {
+            lives -= livesLost;
+        }
+        else
+        { GameOver();  }
+
+        livesText.text = "Lives: " + lives;
+    }
+
+    public int getLives()
+    { return lives; }
 }
