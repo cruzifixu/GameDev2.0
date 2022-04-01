@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 114
+  controlID: 131
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 115
+  controlID: 60
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 116
+  controlID: 61
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -397,9 +397,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 70fbffff
+      m_SelectedIDs: de3d0000
+      m_LastClickedID: 15838
+      m_ExpandedIDs: 70fbffff783e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -445,7 +445,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 292.80002
     y: 73.6
-    width: 907.60004
+    width: 907
     height: 439
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
@@ -459,9 +459,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 477.63077, y: 213.56253, z: -4.995382}
+    m_Target: {x: 476.5658, y: 161.93741, z: -13.55549}
     speed: 2
-    m_Value: {x: 477.63077, y: 213.56253, z: -4.995382}
+    m_Value: {x: 476.5658, y: 161.93741, z: -13.55549}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -512,9 +512,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 56.307636
+    m_Target: 141.90877
     speed: 2
-    m_Value: 56.307636
+    m_Value: 141.90877
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -577,23 +577,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Course Library
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Course Library
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Franz\OneDrive\Dokumente\GitHub\GameDev2.0\Prototype
     5
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 42}
-    m_SelectedIDs: 00400000
-    m_LastClickedID: 16384
-    m_ExpandedIDs: 00000000e43f0000e63f000000ca9a3b
+    scrollPos: {x: 0, y: 174}
+    m_SelectedIDs: e63f0000
+    m_LastClickedID: 16358
+    m_ExpandedIDs: 00000000e43f0000e63f0000f23f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
