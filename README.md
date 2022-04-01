@@ -51,6 +51,8 @@
 >> music on off
 >> 
 >> Mystery Box 1/5 chance to get extra lives
+>> 
+>> Game Over if points == 0
 
 
 
